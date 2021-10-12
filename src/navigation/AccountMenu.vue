@@ -1,17 +1,17 @@
 <template>
   <div class="account">
     <span class="welcome" v-if="user">
-      <a @click="showMenu=!showMenu">
-        <span>{{user?.firstName}}</span>
+      <a @click="showMenu = !showMenu">
+        <span>{{ user?.firstName }}</span>
         <img class="profile" src="../assets/images/profile-circle.png" alt="Profile" />
       </a>
       <div class="menu" v-if="showMenu" @click="signOut()">Sign Out</div>
     </span>
     <span v-if="!user">
-      <router-link class="nav-link" :to="{name: 'Sign-in'}">Sign In</router-link>
+      <router-link class="nav-link" :to="{ name: 'Sign-in' }">Sign In</router-link>
     </span>
     <span v-if="!user">
-      <router-link class="nav-link" :to="{name: 'Register'}">Register</router-link>
+      <router-link class="nav-link" :to="{ name: 'Register' }">Register</router-link>
     </span>
   </div>
 </template>
@@ -20,9 +20,13 @@
 export default {
   data() {
     return {
-      user: null,
       showMenu: false,
     };
+  },
+  computed: {
+    user() {
+      return this.$store.state.user;
+    },
   },
   methods: {
     signOut() {
@@ -37,7 +41,7 @@ a {
   color: white;
 }
 a:hover {
-  color: #D6F0FC;
+  color: #d6f0fc;
 }
 .account {
   font-size: 20px;
@@ -59,7 +63,7 @@ a:hover {
 .welcome a {
   display: flex;
   justify-content: flex-end;
-  align-items:center;
+  align-items: center;
   user-select: none;
   cursor: pointer;
 }
@@ -76,7 +80,7 @@ a:hover {
   top: 36px;
   right: -28px;
   font-size: 20px;
-  border: 1px solid #CCDDFF;
+  border: 1px solid #ccddff;
   cursor: pointer;
 }
 </style>

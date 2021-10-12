@@ -3,6 +3,7 @@ import * as VueRouter from 'vue-router';
 
 import App from './App.vue';
 import routes from './routes';
+import store from './store';
 
 const router = VueRouter.createRouter({
   history: VueRouter.createWebHistory(),
@@ -11,4 +12,5 @@ const router = VueRouter.createRouter({
 
 Vue.createApp(App)
   .use(router)
+  .use(store)
   .mount('#app');
